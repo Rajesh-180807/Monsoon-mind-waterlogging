@@ -1,10 +1,11 @@
+// Modified by Rajesh (2026)
 import { useLang } from '../i18n'
 import { assessmentKey, depthText, sourceKey } from '../utils/evidence'
 
 export default function AiAssessmentCard({ report: r }) {
   const { t, lang } = useLang()
   if (!r) return null
-  const summary = lang === 'hi' && typeof r.aiSummaryHi === 'string' ? r.aiSummaryHi : r.aiSummary
+  const summary = lang === 'kn' && typeof r.aiSummaryKn === 'string' ? r.aiSummaryKn : r.aiSummary
   const confidence = typeof r.aiConfidence === 'number' && Number.isFinite(r.aiConfidence) && r.aiConfidence >= 0 && r.aiConfidence <= 1
   return (
     <section className="bedrock-card" aria-label={t('aiEvidence')}>

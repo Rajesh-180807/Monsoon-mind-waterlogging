@@ -1,3 +1,5 @@
+// Modified by Rajesh (2026): Hindi summary switch replaced by Kannada (kn); Delhi NCR comment changed to Bengaluru.
+// Original project: JalMarg by Vijendra Pratap (Apache License 2.0). Credit kept.
 import { useEffect, useState, useCallback, useMemo } from 'react'
 import { MapContainer, TileLayer, Marker, Popup, Circle, CircleMarker, Polyline, Polygon, useMap, useMapEvents } from 'react-leaflet'
 import L from 'leaflet'
@@ -221,7 +223,7 @@ export default function MapPage() {
         riskLevel: 'UNKNOWN',
         riskScore: 0,
         summaryEn: 'Point assessment could not be computed from server feeds.',
-        summaryHi: 'सर्वर से इस स्थान का जोखिम आकलन प्राप्त नहीं हो सका।'
+        summaryKn: 'ಸರ್ವರ್‌ನಿಂದ ಈ ಸ್ಥಳದ ಅಪಾಯ ಮೌಲ್ಯಮಾಪನ ಪಡೆಯಲು ಸಾಧ್ಯವಾಗಿಲ್ಲ.'
       })
     } finally {
       setInspectingRisk(false)
@@ -312,7 +314,7 @@ export default function MapPage() {
                   <div style={{ fontWeight: 700, margin: '4px 0' }}>{inspectedPoint.name}</div>
                   {inspectedRisk && (
                     <div className="small" style={{ margin: '6px 0', lineHeight: 1.4 }}>
-                      <div>{lang === 'hi' && inspectedRisk.summaryHi ? inspectedRisk.summaryHi : (inspectedRisk.summaryEn || '')}</div>
+                      <div>{lang === 'kn' && inspectedRisk.summaryKn ? inspectedRisk.summaryKn : (inspectedRisk.summaryEn || '')}</div>
                       <div className="row wrap gap" style={{ margin: '6px 0' }}>
                         <span className="pill" style={{ background: '#1E293B', fontSize: '0.72rem' }}>
                           🎯 {t('riskScore')}: <b>{inspectedRisk.riskScore ?? 0}/100</b>
@@ -601,7 +603,7 @@ export default function MapPage() {
           </div>
         )}
 
-        {/* Delhi NCR Locality Search Bar */}
+        {/* Bengaluru Locality Search Bar */}
         <div className="map-search-bar" style={{ marginBottom: 6 }}>
           <PlaceSearch
             value={searchQuery}
@@ -759,7 +761,7 @@ export default function MapPage() {
                 </div>
 
                 <p className="small" style={{ margin: '4px 0 8px', lineHeight: 1.45 }}>
-                  {lang === 'hi' && inspectedRisk.summaryHi ? inspectedRisk.summaryHi : (inspectedRisk.summaryEn || '')}
+                  {lang === 'kn' && inspectedRisk.summaryKn ? inspectedRisk.summaryKn : (inspectedRisk.summaryEn || '')}
                 </p>
 
                 <div className="row gap" style={{ margin: '6px 0 0' }}>

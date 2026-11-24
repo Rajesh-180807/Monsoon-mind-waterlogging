@@ -1,3 +1,4 @@
+// Modified by Rajesh (2026): Bengaluru map centre and place search area. Original work by Vijendra Pratap (Apache 2.0).
 // All calls to the JalMarg backend (Spring Boot) and to free map services.
 
 export const API_BASE = (import.meta.env?.VITE_API_BASE || '').trim().replace(/\/+$/, '')
@@ -398,8 +399,8 @@ export const api = {
 
 // ---------------------------------------------------------------- free map services
 
-// Delhi NCR bounding box, used to keep place search local
-const NCR_VIEWBOX = '76.80,28.90,77.70,28.30'
+// Bengaluru bounding box, used to keep place search local
+const NCR_VIEWBOX = '77.40,13.20,77.85,12.80'
 
 /** Place search (OpenStreetMap Nominatim). */
 export async function searchPlaces(q) {
@@ -490,5 +491,5 @@ export function compressImage(file, maxSide = 1280, quality = 0.82) {
   })
 }
 
-// Default map centre: Delhi NCR
-export const NCR_CENTER = [28.58, 77.25]
+// Default map centre: Bengaluru (modified by Rajesh, 2026)
+export const NCR_CENTER = [12.9716, 77.5946]

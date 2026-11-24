@@ -1,10 +1,12 @@
+// Modified by Rajesh (2026): Delhi NCR sample data and text changed to Bengaluru; Hindi date locale changed to Kannada (kn-IN).
+// Original project: JalMarg by Vijendra Pratap (Apache License 2.0). Credit kept.
 import { useEffect, useState, useCallback } from 'react'
 import { MapContainer, TileLayer, CircleMarker, Tooltip } from 'react-leaflet'
 import { api, NCR_CENTER, photoUrl } from '../api'
 import { useLang } from '../i18n'
 import { SEV_HEX, timeAgo } from '../components/shared'
 
-const AREAS = ['', 'Delhi', 'Noida', 'Greater Noida', 'Ghaziabad', 'Gurugram']
+const AREAS = ['', 'Bengaluru Central', 'Bengaluru East', 'Bengaluru South', 'Bengaluru North', 'Bengaluru West']
 
 function Bars({ data = [] }) {
   if (!data || data.length === 0) return null
@@ -64,7 +66,7 @@ export default function AuthorityPage() {
   const [incidents, setIncidents] = useState([])
   const [selectedIncident, setSelectedIncident] = useState(null)
   const [incidentStatusFilter, setIncidentStatusFilter] = useState('')
-  const [assignForm, setAssignForm] = useState({ assignedUnit: 'NDMC Quick Response 01', equipmentDetails: '1x High-Capacity Dewatering Pump (5000 LPM)' })
+  const [assignForm, setAssignForm] = useState({ assignedUnit: 'BBMP Quick Response 01', equipmentDetails: '1x High-Capacity Dewatering Pump (5000 LPM)' })
   const [statusForm, setStatusForm] = useState({ targetStatus: 'IN_PROGRESS', resolutionNotes: '' })
   const [incidentActionMsg, setIncidentActionMsg] = useState('')
 
@@ -99,10 +101,10 @@ export default function AuthorityPage() {
   const [flywayIntegrityStatus, setFlywayIntegrityStatus] = useState(null)
   const [showNegativeModal, setShowNegativeModal] = useState(false)
   const [negativeForm, setNegativeForm] = useState({
-    locationDescription: 'Minto Bridge Underpass, Connaught Place Outer Circle',
-    corridorName: 'Connaught Place - Minto Road Corridor',
-    latitude: 28.6331,
-    longitude: 77.2208,
+    locationDescription: 'KR Circle Underpass, Kasturba Road',
+    corridorName: 'Kasturba Road - KR Circle Corridor',
+    latitude: 12.9763,
+    longitude: 77.5929,
     observationTimestamp: new Date().toISOString().slice(0, 16),
     noStandingWaterConfirmed: true,
     verificationNotes: 'Routine morning patrol inspection; road surface completely dry, drainage inlets clear.'
@@ -123,15 +125,15 @@ export default function AuthorityPage() {
   const [dryRoadForm, setDryRoadForm] = useState({
     inspectorName: 'Inspector Rajesh Sharma',
     inspectorDesignation: 'Executive Road Engineer',
-    agency: 'NDMC Field Engineering Unit',
-    locationDescription: 'Minto Bridge Underpass, Connaught Place Outer Circle',
-    corridorName: 'Connaught Place - Minto Road Corridor',
-    latitude: 28.6331,
-    longitude: 77.2208,
+    agency: 'BBMP Field Engineering Unit',
+    locationDescription: 'KR Circle Underpass, Kasturba Road',
+    corridorName: 'Kasturba Road - KR Circle Corridor',
+    latitude: 12.9763,
+    longitude: 77.5929,
     inspectionTimestamp: new Date().toISOString().slice(0, 16),
     roadSurfaceCondition: 'DRY',
     waterPresenceConfirmed: false,
-    photographicEvidenceUrl: 'https://ndmc.gov.in/inspections/2026/minto_dry_001.jpg',
+    photographicEvidenceUrl: 'https://bbmp.gov.in/inspections/2026/krcircle_dry_001.jpg',
     notes: 'Routine scheduled field verification patrol. Road surface clean, zero standing water across all carriageways.'
   })
   const [dryRoadSubmitting, setDryRoadSubmitting] = useState(false)
@@ -139,15 +141,15 @@ export default function AuthorityPage() {
 
   const [showDepthModal, setShowDepthModal] = useState(false)
   const [depthForm, setDepthForm] = useState({
-    locationDescription: 'Zakhira Underpass (Drainage Sump 01)',
-    corridorName: 'Rohtak Road - Zakhira Corridor',
-    latitude: 28.6652,
-    longitude: 77.1612,
+    locationDescription: 'Silk Board Junction Underpass (Drainage Sump 01)',
+    corridorName: 'Hosur Road - Silk Board Corridor',
+    latitude: 12.9177,
+    longitude: 77.6233,
     measurementTimestamp: new Date().toISOString().slice(0, 16),
     measuredDepthMeters: 0.42,
     measurementMethod: 'CALIBRATED_STAFF_GAUGE',
-    instrumentIdentifier: 'SG-ZAK-01-CAL2024',
-    calibrationEvidenceDoc: 'PWD/DEL/IRR/CAL/2024/091 - Certified Metrology Verification',
+    instrumentIdentifier: 'SG-SLK-01-CAL2024',
+    calibrationEvidenceDoc: 'PWD/KA/IRR/CAL/2024/091 - Certified Metrology Verification',
     measurementUncertaintyMeters: 0.02,
     notes: 'Calibrated physical staff gauge measurement during peak monsoon runoff.'
   })
@@ -532,7 +534,7 @@ export default function AuthorityPage() {
   const fmt = (iso) => {
     if (!iso) return '-'
     try {
-      return new Date(iso).toLocaleDateString(lang === 'hi' ? 'hi-IN' : 'en-IN', {
+      return new Date(iso).toLocaleDateString(lang === 'kn' ? 'kn-IN' : 'en-IN', {
         day: 'numeric',
         month: 'short',
         year: 'numeric',
@@ -617,7 +619,7 @@ export default function AuthorityPage() {
                   </span>
                 </div>
                 <div className="small muted">
-                  Department: <b>{currentUser.department || 'NDMC Operations'}</b> · Session Active · Token Authenticated
+                  Department: <b>{currentUser.department || 'BBMP Operations'}</b> · Session Active · Token Authenticated
                 </div>
               </div>
             </div>
@@ -674,7 +676,7 @@ export default function AuthorityPage() {
                   className="btn small ghost"
                   onClick={() => { setLoginForm({ username: 'admin_ndmc', password: '' }) }}
                 >
-                  Admin NDMC
+                  Admin BBMP
                 </button>
                 <button
                   type="button"
@@ -961,7 +963,7 @@ export default function AuthorityPage() {
                             )}
                             <b>{h.name}</b>
                           </td>
-                          <td>{h.area || 'NCR'}</td>
+                          <td>{h.area || 'Bengaluru'}</td>
                           <td><b>{h.totalReports}</b></td>
                           <td>{h.reportsLast30Days ?? 0}</td>
                           <td>{(h.maxDepthFt || 0).toFixed(1)} ft</td>
@@ -1435,7 +1437,7 @@ export default function AuthorityPage() {
                               <input
                                 className="input"
                                 type="text"
-                                placeholder="Assigned Unit (e.g. NDMC Dewatering Team 4)"
+                                placeholder="Assigned Unit (e.g. BBMP Dewatering Team 4)"
                                 value={assignForm.assignedUnit}
                                 onChange={(e) => setAssignForm({ ...assignForm, assignedUnit: e.target.value })}
                                 style={{ width: '100%', marginBottom: 6 }}
@@ -1580,7 +1582,7 @@ export default function AuthorityPage() {
           {/* Top Header & Refresh */}
           <div className="card row between wrap items-center" style={{ marginBottom: 16 }}>
             <div>
-              <h3 style={{ margin: 0 }}>🤖 {t('tabMlReadiness')} — Delhi NCR Foundation</h3>
+              <h3 style={{ margin: 0 }}>🤖 {t('tabMlReadiness')} — Bengaluru Foundation</h3>
               <span className="small muted">
                 Evidence-based data engineering and ground-truth readiness gate audit. No synthetic labels.
               </span>
@@ -2108,7 +2110,7 @@ export default function AuthorityPage() {
                 <div style={{ fontSize: '1.4rem', fontWeight: 700, color: '#D97706' }}>
                   {evidenceAuditSummary?.partiallyVerifiedObservations ?? 16}
                 </div>
-                <div className="small muted">Missing raw PWD/DTP PDFs</div>
+                <div className="small muted">Missing raw BBMP/BTP PDFs</div>
               </div>
               <div style={{ padding: 10, background: '#FEF2F2', borderRadius: 6, border: '1px solid #FECACA' }}>
                 <span className="small muted">{t('auditUnverifiedMunicipal')}</span>
@@ -2403,7 +2405,7 @@ export default function AuthorityPage() {
             </div>
 
             <div className="banner warn small" style={{ marginTop: 12, marginBottom: 12 }}>
-              🛑 <b>Supervised Forecasting Withheld:</b> Ground-truth dataset passes schema validation and spatial-leakage prevention, but exhibits critical volume deficits across Delhi NCR corridors. <b>No synthetic data is generated to circumvent gates.</b>
+              🛑 <b>Supervised Forecasting Withheld:</b> Ground-truth dataset passes schema validation and spatial-leakage prevention, but exhibits critical volume deficits across Bengaluru corridors. <b>No synthetic data is generated to circumvent gates.</b>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 10, marginBottom: 12 }}>
@@ -2536,7 +2538,7 @@ export default function AuthorityPage() {
                         {obs.observationId || `#${obs.id}`}
                       </td>
                       <td style={{ padding: '6px 8px' }}>
-                        <div><b>{obs.corridorName || 'Delhi NCR Corridor'}</b></div>
+                        <div><b>{obs.corridorName || 'Bengaluru Corridor'}</b></div>
                         <div className="small muted">{obs.locationDescription}</div>
                       </td>
                       <td style={{ padding: '6px 8px', fontFamily: 'monospace' }}>
@@ -2597,7 +2599,7 @@ export default function AuthorityPage() {
                         {obs.observationId}
                       </td>
                       <td style={{ padding: '6px 8px' }}>
-                        <div><b>{obs.corridorName || 'Delhi NCR'}</b></div>
+                        <div><b>{obs.corridorName || 'Bengaluru'}</b></div>
                         <div className="small muted">{obs.locationDescription}</div>
                       </td>
                       <td style={{ padding: '6px 8px' }}>

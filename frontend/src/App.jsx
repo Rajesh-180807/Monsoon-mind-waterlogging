@@ -1,3 +1,4 @@
+// Modified by Rajesh (2026)
 import { NavLink, Route, Routes, Link } from 'react-router-dom'
 import { useLang } from './i18n'
 import MapPage from './pages/MapPage'
@@ -25,7 +26,7 @@ export default function App() {
         <Link to="/" className="brand">
           <img src="/icon.svg" alt="" width="30" height="30" />
           <span>
-            <b>JalMarg</b>
+            <b>Monsoon-Mind</b>
             <small>{t('appTagline')}</small>
           </span>
         </Link>
@@ -37,10 +38,10 @@ export default function App() {
         </nav>
         <button
           className="lang-toggle"
-          onClick={() => setLang(lang === 'en' ? 'hi' : 'en')}
+          onClick={() => setLang(lang === 'en' ? 'kn' : 'en')}
           aria-label="Switch language"
         >
-          {lang === 'en' ? 'हिंदी' : 'English'}
+          {lang === 'en' ? 'ಕನ್ನಡ' : 'English'}
         </button>
       </header>
 

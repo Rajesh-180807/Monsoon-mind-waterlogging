@@ -1,3 +1,4 @@
+// Modified by Rajesh (2026)
 import L from 'leaflet'
 import { useState, useRef, useEffect } from 'react'
 import AiAssessmentCard from './AiAssessmentCard'
@@ -82,8 +83,8 @@ export const destIcon = L.divIcon({
 export function timeAgo(iso, lang) {
   if (!iso) return ''
   const s = Math.max(1, Math.round((Date.now() - new Date(iso).getTime()) / 1000))
-  const units = lang === 'hi'
-    ? [[86400, 'दिन'], [3600, 'घंटे'], [60, 'मिनट'], [1, 'सेकंड']]
+  const units = lang === 'kn'
+    ? [[86400, 'ದಿನ'], [3600, 'ಗಂಟೆ'], [60, 'ನಿಮಿಷ'], [1, 'ಸೆಕೆಂಡ್']]
     : [[86400, 'd'], [3600, 'h'], [60, 'min'], [1, 's']]
   for (const [sec, label] of units) {
     if (s >= sec) return `${Math.floor(s / sec)} ${label}`
@@ -293,7 +294,7 @@ export function PredictedRiskCard({ ra, compact = false }) {
     if (ra.factorBreakdown) factors = JSON.parse(ra.factorBreakdown)
   } catch {}
 
-  const summary = lang === 'hi' && ra.summaryHi ? ra.summaryHi : (ra.summaryEn || '')
+  const summary = lang === 'kn' && ra.summaryKn ? ra.summaryKn : (ra.summaryEn || '')
   const color = RISK_HEX[ra.riskLevel] || '#7C3AED'
   const isMissingTelemetry = ra.dataQuality === 'MISSING_TELEMETRY'
 

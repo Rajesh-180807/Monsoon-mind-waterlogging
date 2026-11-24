@@ -34,11 +34,13 @@ This repository is an independent project. It is maintained separately and is no
 
 
 
-- Project renamed to Monsoon Mind and Waterlogging.
+- Project renamed to Monsoon Mind and Waterlogging (the app header shows Monsoon-Mind).
 
-- Being adapted from Delhi NCR to Bengaluru (in progress).
+- Adapted from Delhi NCR to Bengaluru: map centre, area names and local bodies (BBMP, BWSSB, BDA) are updated in the frontend. Backend demo data is being converted (in progress).
 
-- Modified files will carry a note that they were changed.
+- Languages are now English and Kannada. Hindi was replaced with Kannada.
+
+- Every modified file carries a "Modified by Rajesh (2026)" note at the top.
 
 
 

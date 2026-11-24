@@ -1,3 +1,4 @@
+// Modified by Rajesh (2026)
 export const validDepth = (value) => typeof value === 'number' && Number.isFinite(value) && value >= 0
 export const validId = (value) => Number.isSafeInteger(value) && value > 0
 export const confirmationCount = (r) => Number.isInteger(r?.confirmations) && r.confirmations >= 0 ? r.confirmations : null
@@ -12,7 +13,7 @@ export function assessmentKey(r) {
 }
 export function formatTimestamp(value, lang, fallback) {
   if (!value || !Number.isFinite(Date.parse(value))) return fallback
-  return new Date(value).toLocaleString(lang === 'hi' ? 'hi-IN' : 'en-IN')
+  return new Date(value).toLocaleString(lang === 'kn' ? 'kn-IN' : 'en-IN')
 }
 export function depthText(value, t) {
   return validDepth(value) ? `${value.toFixed(1)} ${t('ft')}` : t('depthUnavailable')

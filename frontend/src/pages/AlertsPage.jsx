@@ -1,3 +1,5 @@
+// Modified by Rajesh (2026): Hindi language option replaced by Kannada (kn).
+// Original project: JalMarg by Vijendra Pratap (Apache License 2.0). Credit kept.
 import { useState, useEffect } from 'react'
 import { MapContainer, TileLayer, Marker, Circle, useMapEvents, useMap } from 'react-leaflet'
 import { api, getPosition, NCR_CENTER } from '../api'
@@ -221,10 +223,10 @@ export default function AlertsPage() {
               </button>
               <button
                 type="button"
-                className={form.lang === 'hi' ? 'on' : ''}
-                onClick={() => setForm({ ...form, lang: 'hi' })}
+                className={form.lang === 'kn' ? 'on' : ''}
+                onClick={() => setForm({ ...form, lang: 'kn' })}
               >
-                हिंदी
+                ಕನ್ನಡ
               </button>
             </div>
           </div>

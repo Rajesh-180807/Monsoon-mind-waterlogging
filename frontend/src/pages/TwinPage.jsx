@@ -1,3 +1,5 @@
+// Modified by Rajesh (2026): Delhi NCR text and sample coordinates changed to Bengaluru; NDMC changed to BBMP.
+// Original project: JalMarg by Vijendra Pratap (Apache License 2.0). Credit kept.
 import { useEffect, useState, useCallback, useMemo } from 'react'
 import { MapContainer, TileLayer, Marker, Popup, Polyline, Circle, Polygon, useMap } from 'react-leaflet'
 import L from 'leaflet'
@@ -78,8 +80,8 @@ export default function TwinPage() {
     description: '',
     incidentType: 'SURFACE_FLOODING',
     severity: 'HIGH',
-    latitude: 28.6289,
-    longitude: 77.2065,
+    latitude: 12.9716,
+    longitude: 77.5946,
     zoneId: '',
     waterDepthMeters: '',
     roadBlockage: true
@@ -293,7 +295,7 @@ export default function TwinPage() {
     try {
       const payload = {
         ...newIncidentForm,
-        locationName: newIncidentForm.title.trim() || 'Delhi NCR Incident Site',
+        locationName: newIncidentForm.title.trim() || 'Bengaluru Incident Site',
         latitude: Number(newIncidentForm.latitude),
         longitude: Number(newIncidentForm.longitude),
         zoneId: newIncidentForm.zoneId ? Number(newIncidentForm.zoneId) : null,
@@ -306,8 +308,8 @@ export default function TwinPage() {
         description: '',
         incidentType: 'SURFACE_FLOODING',
         severity: 'HIGH',
-        latitude: 28.6289,
-        longitude: 77.2065,
+        latitude: 12.9716,
+        longitude: 77.5946,
         zoneId: '',
         waterDepthMeters: '',
         roadBlockage: true
@@ -356,7 +358,7 @@ export default function TwinPage() {
       <header className="twin-header-bar">
         <div className="twin-title-group">
           <div className="twin-badge">MUNICIPAL DIGITAL TWIN</div>
-          <h2>Delhi NCR Urban Waterlogging Twin</h2>
+          <h2>Bengaluru Urban Waterlogging Twin</h2>
           <p className="twin-subtitle">
             Evidence-backed geospatial state engine, what-if scenario simulator & municipal incident lifecycle
           </p>
@@ -487,7 +489,7 @@ export default function TwinPage() {
                   <h4>Map Layers Legend</h4>
                   <div className="legend-items">
                     <span className="legend-chip"><span className="dot green"></span> Official Zone Boundary</span>
-                    <span className="legend-chip"><span className="dot blue"></span> Statutory NCR Extent</span>
+                    <span className="legend-chip"><span className="dot blue"></span> Greater Bengaluru Extent</span>
                     <span className="legend-chip">🌊 Drainage Outfall</span>
                     <span className="legend-chip">⚙️ Pumping Station</span>
                     <span className="legend-chip">⚠️ Critical Underpass</span>
@@ -511,7 +513,7 @@ export default function TwinPage() {
                         </div>
                         <div className="zone-item-meta">
                           <span>{z.municipalityName}</span>
-                          <span>{z.areaSqKm ? `${z.areaSqKm} km²` : 'NCR'}</span>
+                          <span>{z.areaSqKm ? `${z.areaSqKm} km²` : 'Bengaluru'}</span>
                         </div>
                       </div>
                     ))}
@@ -561,7 +563,7 @@ export default function TwinPage() {
                           <span className={`snap-badge ${s.snapshotType.toLowerCase()}`}>{s.snapshotType}</span>
                           <span className="snap-time">{new Date(s.snapshotTimestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                         </div>
-                        <h4 className="snap-title">Snapshot #{s.id}: Zone {s.zoneName || 'NCR Unified'}</h4>
+                        <h4 className="snap-title">Snapshot #{s.id}: Zone {s.zoneName || 'Bengaluru Unified'}</h4>
                         <div className="snap-score-row">
                           <span className="risk-score" style={{ color: RISK_HEX[s.riskLevel] || '#2563EB' }}>
                             Risk: {s.riskScore?.toFixed(2)} ({s.riskLevel})
@@ -637,7 +639,7 @@ export default function TwinPage() {
                           className={scenarioFormErrors.title ? 'input-error' : ''}
                           value={scenarioForm.title}
                           onChange={(e) => setScenarioForm({ ...scenarioForm, title: e.target.value })}
-                          placeholder="e.g. Monsoon Cloudburst Over Central Delhi"
+                          placeholder="e.g. Monsoon Cloudburst Over Central Bengaluru"
                           required
                         />
                         {scenarioFormErrors.title && <small className="error-text">{scenarioFormErrors.title}</small>}
@@ -702,7 +704,7 @@ export default function TwinPage() {
                           value={scenarioForm.zoneId}
                           onChange={(e) => setScenarioForm({ ...scenarioForm, zoneId: e.target.value })}
                         >
-                          <option value="">NCR Unified (All Zones)</option>
+                          <option value="">Bengaluru Unified (All Zones)</option>
                           {zones.map((z) => (
                             <option key={z.id} value={z.id}>{z.zoneName} ({z.zoneCode})</option>
                           ))}
@@ -731,7 +733,7 @@ export default function TwinPage() {
                             checked={scenarioForm.roadClosureSimulated}
                             onChange={(e) => setScenarioForm({ ...scenarioForm, roadClosureSimulated: e.target.checked })}
                           />
-                          Simulate Underpass Inundation Closures (Minto Bridge / Pul Prahladpur)
+                          Simulate Underpass Inundation Closures (KR Circle / Silk Board)
                         </label>
                       </div>
                     </div>
@@ -769,7 +771,7 @@ export default function TwinPage() {
                     </div>
                     <h3>{scenarioResult.scenarioName}</h3>
                     <p className="scenario-desc">
-                      Simulated: {scenarioResult.rainfallTotalMm ?? scenarioResult.rainfallMm} mm ({scenarioResult.rainfallIntensityMmPerHour} mm/h) · Zone: {scenarioResult.targetZoneName || 'NCR Unified'} · Assumed Drainage: {scenarioResult.assumedDrainageCapacityPercent != null ? `${scenarioResult.assumedDrainageCapacityPercent}%` : '50%'}
+                      Simulated: {scenarioResult.rainfallTotalMm ?? scenarioResult.rainfallMm} mm ({scenarioResult.rainfallIntensityMmPerHour} mm/h) · Zone: {scenarioResult.targetZoneName || 'Bengaluru Unified'} · Assumed Drainage: {scenarioResult.assumedDrainageCapacityPercent != null ? `${scenarioResult.assumedDrainageCapacityPercent}%` : '50%'}
                     </p>
 
                     <div className="scenario-metrics-comparison">
@@ -807,7 +809,7 @@ export default function TwinPage() {
                         </div>
                         <div className="breakdown-item">
                           <span className="bk-lbl">Target Municipality:</span>
-                          <span className="bk-val">{scenarioResult.targetZoneName || 'NCR Regional'}</span>
+                          <span className="bk-val">{scenarioResult.targetZoneName || 'Bengaluru Regional'}</span>
                         </div>
                         <div className="breakdown-item">
                           <span className="bk-lbl">Heuristic Model:</span>
@@ -865,7 +867,7 @@ export default function TwinPage() {
                     <div>
                       <h3>Municipal Incident Management Requires Authorized Staff Access</h3>
                       <p className="auth-guard-subtext">
-                        Real-time incident triage, pump dispatching, and lifecycle verification are restricted to verified municipal personnel (PWD Drainage, NDMC Control Room, Delhi Traffic Police).
+                        Real-time incident triage, pump dispatching, and lifecycle verification are restricted to verified municipal personnel (PWD Drainage, BBMP Control Room, Bengaluru Traffic Police).
                       </p>
                     </div>
                   </div>
@@ -894,7 +896,7 @@ export default function TwinPage() {
                         className={`preset-btn ${staffLoginForm.username === 'admin_ndmc' ? 'active' : ''}`}
                         onClick={() => setStaffLoginForm({ username: 'admin_ndmc', password: '' })}
                       >
-                        🏛️ NDMC Control Room Admin <code>(admin_ndmc)</code>
+                        🏛️ BBMP Control Room Admin <code>(admin_ndmc)</code>
                       </button>
                     </div>
 
@@ -1005,7 +1007,7 @@ export default function TwinPage() {
                               <h4 className="inc-title">{inc.title}</h4>
                               <div className="inc-meta-row">
                                 <span>Priority: <strong>{inc.priorityScore?.toFixed(1)}</strong></span>
-                                <span>{inc.zoneName || 'NCR General'}</span>
+                                <span>{inc.zoneName || 'Bengaluru General'}</span>
                                 <span>{inc.assignedUnit || 'Unassigned'}</span>
                               </div>
                             </div>
@@ -1029,7 +1031,7 @@ export default function TwinPage() {
 
                           <div className="inc-stats-grid">
                             <div><strong>Location:</strong> {selectedIncident.latitude?.toFixed(4)}, {selectedIncident.longitude?.toFixed(4)}</div>
-                            <div><strong>Zone:</strong> {selectedIncident.zoneName || 'NCR Municipal'}</div>
+                            <div><strong>Zone:</strong> {selectedIncident.zoneName || 'Bengaluru Municipal'}</div>
                             <div><strong>Priority Score:</strong> {selectedIncident.priorityScore?.toFixed(2)}</div>
                             <div><strong>Water Depth:</strong> {selectedIncident.waterDepthMeters != null ? `${selectedIncident.waterDepthMeters} m` : 'Unverified / Unknown'}</div>
                             <div><strong>Road Blocked:</strong> {selectedIncident.roadBlockage ? 'Yes ⛔' : 'No'}</div>
@@ -1109,7 +1111,7 @@ export default function TwinPage() {
                               <label>Incident Title <span className="req">*</span></label>
                               <input
                                 type="text"
-                                placeholder="e.g. Minto Bridge Underpass Submerged"
+                                placeholder="e.g. KR Circle Underpass Submerged"
                                 value={newIncidentForm.title}
                                 onChange={(e) => setNewIncidentForm({ ...newIncidentForm, title: e.target.value })}
                                 required
@@ -1143,7 +1145,7 @@ export default function TwinPage() {
                                   value={newIncidentForm.zoneId}
                                   onChange={(e) => setNewIncidentForm({ ...newIncidentForm, zoneId: e.target.value })}
                                 >
-                                  <option value="">NCR General</option>
+                                  <option value="">Bengaluru General</option>
                                   {zones.map((z) => (
                                     <option key={z.id} value={z.id}>{z.zoneName}</option>
                                   ))}
@@ -1262,7 +1264,7 @@ export default function TwinPage() {
                       <span className="tp-tag green">OFFICIAL AUDITED</span>
                       <h4>Municipal Incident Records</h4>
                     </div>
-                    <p>Operational incident tickets created and verified by authenticated PWD, NDMC, or Traffic Police operators. Backed by immutable audit events in <code>twin_audit_events</code>.</p>
+                    <p>Operational incident tickets created and verified by authenticated PWD, BBMP, or Traffic Police operators. Backed by immutable audit events in <code>twin_audit_events</code>.</p>
                   </div>
 
                   <div className="transparency-card">
