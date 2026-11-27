@@ -432,7 +432,7 @@ export default function TwinPage() {
                 <div className="twin-map-wrapper">
                   <MapContainer center={NCR_CENTER} zoom={11} scrollWheelZoom={false} style={{ height: '520px', width: '100%', borderRadius: '12px' }}>
                     <TileLayer
-                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                      url="https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png"
                       attribution="&copy; OpenStreetMap contributors"
                     />
                     <MapHelper center={activeZone ? [activeZone.centroidLat ?? activeZone.centerLat, activeZone.centroidLng ?? activeZone.centerLng] : null} zoom={activeZone ? 13 : 11} />

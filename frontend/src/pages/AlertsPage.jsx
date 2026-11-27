@@ -173,7 +173,7 @@ export default function AlertsPage() {
             zoomControl={false}
           >
             <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              url="https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png"
               attribution="&copy; OpenStreetMap"
             />
             <Picker onPick={setPos} />

@@ -1,3 +1,4 @@
+// Modified by Rajesh (2026)
 package org.growforge.jalmarg.service;
 
 import org.growforge.jalmarg.model.Enums.DepthSource;
@@ -21,7 +22,7 @@ import java.util.Random;
 
 /**
  * Demo data so the map and dashboard are not empty on first run.
- * Locations are well-known recurring waterlogging spots in Delhi NCR (coordinates approximate).
+ * Locations are commonly reported recurring waterlogging spots in Bengaluru (coordinates approximate, for demo only).
  * Report counts and depths are ILLUSTRATIVE, generated for the demo, and every seeded
  * report is tagged DepthSource.DEMO so the UI can label it.
  */
@@ -35,32 +36,32 @@ public class SeedService implements ApplicationRunner {
     private record Spot(String name, String area, double lat, double lng, int proneness) {}
 
     private static final List<Spot> SPOTS = List.of(
-            new Spot("Minto Bridge underpass, Connaught Place", "Delhi", 28.6347, 77.2263, 5),
-            new Spot("Pul Prahladpur underpass, MB Road", "Delhi", 28.5019, 77.2873, 5),
-            new Spot("Zakhira underpass", "Delhi", 28.6612, 77.1455, 4),
-            new Spot("Azad Market underpass", "Delhi", 28.6667, 77.2064, 4),
-            new Spot("ITO crossing, Vikas Marg", "Delhi", 28.6289, 77.2410, 3),
-            new Spot("Dhaula Kuan", "Delhi", 28.5917, 77.1611, 3),
-            new Spot("Mehrauli-Badarpur Road, Saket", "Delhi", 28.5246, 77.2134, 3),
-            new Spot("Moolchand underpass, Ring Road", "Delhi", 28.5640, 77.2340, 3),
-            new Spot("Rohtak Road, Nangloi", "Delhi", 28.6810, 77.0640, 3),
-            new Spot("Anand Vihar ISBT road", "Delhi", 28.6469, 77.3160, 2),
-            new Spot("NH-9 underpass near Sector 62", "Noida", 28.6280, 77.3690, 4),
-            new Spot("Sector 18 / Atta Market", "Noida", 28.5700, 77.3260, 3),
-            new Spot("Sector 52 metro station road", "Noida", 28.5865, 77.3630, 2),
-            new Spot("Mahamaya flyover underpass", "Noida", 28.5455, 77.3340, 3),
-            new Spot("Pari Chowk", "Greater Noida", 28.4660, 77.5130, 2),
-            new Spot("Knowledge Park II main road", "Greater Noida", 28.4625, 77.4905, 3),
-            new Spot("Meerut Road, near Hindon", "Ghaziabad", 28.6780, 77.4400, 2),
-            new Spot("Hero Honda Chowk", "Gurugram", 28.4296, 77.0118, 5),
-            new Spot("Narsinghpur, NH-48 service road", "Gurugram", 28.4120, 76.9880, 4),
-            new Spot("Golf Course Road, Sector 54", "Gurugram", 28.4350, 77.1050, 3)
+            new Spot("KR Circle underpass", "Bengaluru Central", 12.9763, 77.5929, 5),
+            new Spot("Silk Board junction", "Bengaluru South", 12.9177, 77.6233, 5),
+            new Spot("Kundalahalli underpass", "Bengaluru East", 12.9698, 77.7140, 4),
+            new Spot("Bellandur junction, Outer Ring Road", "Bengaluru East", 12.9260, 77.6762, 5),
+            new Spot("Hebbal flyover", "Bengaluru North", 13.0358, 77.5970, 4),
+            new Spot("Agara junction, HSR Layout", "Bengaluru South", 12.9215, 77.6480, 4),
+            new Spot("Marathahalli bridge", "Bengaluru East", 12.9569, 77.7011, 4),
+            new Spot("Mekhri Circle underpass", "Bengaluru North", 13.0140, 77.5800, 3),
+            new Spot("Kodigehalli gate", "Bengaluru North", 13.0583, 77.5864, 3),
+            new Spot("Anand Rao Circle underpass", "Bengaluru Central", 12.9784, 77.5726, 4),
+            new Spot("Tin Factory junction, KR Puram", "Bengaluru East", 13.0026, 77.6695, 3),
+            new Spot("Kogilu Cross, Yelahanka", "Bengaluru North", 13.1017, 77.6049, 3),
+            new Spot("Parangi Palya, HSR Layout", "Bengaluru South", 12.9144, 77.6390, 3),
+            new Spot("Iblur junction, Sarjapur Road", "Bengaluru East", 12.9230, 77.6640, 3),
+            new Spot("Nayandahalli junction, Mysore Road", "Bengaluru West", 12.9418, 77.5228, 3),
+            new Spot("Vijayanagar, Magadi Road", "Bengaluru West", 12.9719, 77.5300, 3),
+            new Spot("South End Circle, Jayanagar", "Bengaluru South", 12.9387, 77.5834, 3),
+            new Spot("Windsor Manor underpass", "Bengaluru Central", 12.9890, 77.5810, 4),
+            new Spot("Yeshwanthpur circle", "Bengaluru West", 13.0285, 77.5400, 3),
+            new Spot("Dairy Circle, Bannerghatta Road", "Bengaluru South", 12.9387, 77.6011, 3)
     );
 
     /** Spots that are shown as "flooded right now" in the demo, with depth in feet. */
     private static final double[][] LIVE_DEMO = {
             // index into SPOTS, depth ft
-            {0, 2.2}, {1, 1.6}, {15, 0.7}, {11, 0.6}, {17, 1.9}, {10, 1.1}
+            {0, 2.2}, {1, 1.6}, {3, 1.9}, {2, 0.7}, {4, 1.1}, {6, 0.6}
     };
 
     private final HotspotRepository hotspots;
